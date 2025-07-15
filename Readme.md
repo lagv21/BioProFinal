@@ -76,7 +76,7 @@ que terminen en .treefile
 --------------------------------------------------------------------------------
 ## Herramientas y Tips Extras
 
-###Para verificar el alineamiento con MESQUITE
+### Para verificar el alineamiento con MESQUITE
 
 - Para ejecutar el programa necesitas Java9
 - Instalar el programa en tu ordenador https://www.mesquiteproject.org/
