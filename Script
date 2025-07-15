@@ -1,1 +1,15 @@
+sh -c "$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
 
+esearch -version
+
+esearch -db nucleotide -query "Arecaceae[Organism] AND rbcL[Gene] AND 500:3000[Sequence Length]" | \efetch -format uid > arecaceae_rbcl_ids.txt
+
+efetch -db nucleotide -id $(cat arecaceae_rbcl_ids.txt) -format fasta > arecaceae_rbcl.fasta
+
+grep ">" arecaceae_rbcl.fasta
+
+./muscle3.8.31_i86linux64 -in arecaceae_rbcl.fasta -out arecaceae_rbcl.alineamiento.fasta -maxiters 1 -diags
+
+module load iqtree/2.2.2.6
+
+iqtree2 -s arecaceae_rbcl.alineamiento.fasta
